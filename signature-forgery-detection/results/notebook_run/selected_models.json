@@ -1,0 +1,21 @@
+{
+  "thresholds": {
+    "Geometric": -0.16028927621674607,
+    "HOG + SVM": -0.35495863162384206,
+    "Siamese CNN": -3.6722867488861084,
+    "Fusion Extra Trees": 0.37350216450216456
+  },
+  "cnn_epoch": 17,
+  "cnn_val_ROC_AUC": 0.8471498842592593,
+  "sklearn_parameters": {
+    "Geometric": {
+      "C": 1,
+      "gamma": 0.01
+    },
+    "HOG + SVM": {
+      "C": 1,
+      "gamma": "scale"
+    }
+  },
+  "selection": "validation query ROC-AUC; thresholds validation equal-error approximation"
+}

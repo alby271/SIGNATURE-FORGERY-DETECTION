@@ -1,27 +1,22 @@
 # Signature Forgery Detection
 
-Three pair-wise verifiers (reference genuine signature vs questioned signature):
+Read the [complete project guide](../README.md) for the problem's importance and use cases, methods, measured results, prerequisites, download instructions, metrics, and limitations.
 
-1. Preprocessing + contour analysis + geometric features
-2. HOG features + SVM (on the HOG difference of the pair)
-3. Siamese CNN
+## Quick start
 
-Dataset: CEDAR (55 writers, 24 genuine + 24 forged each), from
-https://www.kaggle.com/datasets/ishanikathuria/handwritten-signature-datasets — included under `CEDAR/CEDAR/`.
-Check the original CEDAR licence terms before reuse.
+From this directory, create a Python 3.13 environment and install dependencies:
 
-## Run
+```powershell
+py -3.13 -m venv .venv
+.\.venv\Scripts\python.exe -m pip install -r requirements.txt
 ```
-pip install opencv-python numpy scikit-learn torch matplotlib
-python signature_verify.py --data CEDAR/CEDAR --epochs 10 --plots plots
-python signature_verify.py --demo --plots plots_demo    # synthetic data, no dataset needed
-```
-Writers are split 60/15/25 (train/validation/test, no writer in two groups). The accept
-threshold is tuned on validation writers (FAR ≈ FRR) and scored on unseen test writers.
 
-## Results (CEDAR, 14 unseen test writers, see results_cedar.log)
-| Method | Accuracy | FAR | FRR |
-|---|---|---|---|
-| Geometric | 0.610 | 0.360 | 0.420 |
-| HOG + SVM | 0.708 | 0.225 | 0.360 |
-| Siamese CNN | 0.611 | 0.393 | 0.385 |
+Open [signature_forgery_detection.ipynb](signature_forgery_detection.ipynb) in VS Code, select this folder's `.venv` kernel, and run all cells in order. The first run trains models locally. Saved notebook outputs and [exported metrics](results/notebook_run/metrics.csv) can also be viewed without training.
+
+Run the lightweight checks:
+
+```powershell
+.\.venv\Scripts\python.exe test_notebook.py
+```
+
+The original `signature_verify.py` baseline is retained. Its historical results use a different evaluation protocol; consult the main guide before comparing tables.
