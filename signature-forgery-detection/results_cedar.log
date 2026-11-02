@@ -1,0 +1,4 @@
+writers 33/8/14, pairs 6336/768/1344
+1 Geometric            acc=0.610  FAR=0.360  FRR=0.420
+2 HOG+SVM              acc=0.708  FAR=0.225  FRR=0.360
+3 Siamese CNN          acc=0.611  FAR=0.393  FRR=0.385
